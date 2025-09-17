@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 882e51ca14ed97149bc768a959290a34
+  productGUID: a4c2865bcb801e34b8c035de949203a2
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Tank
+  productName: TANK
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -677,14 +677,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Tank
+  metroPackageName: TANK
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Tank
+  metroApplicationDescription: TANK
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -752,12 +752,12 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: bedc3218-47e0-42b6-ae46-e9654a8cd10e
+  cloudProjectId: 0d075e80-d826-4479-a23e-311ab0388490
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Tank 2025-09-15_09-59-45
+  projectName: TANK
   organizationId: tefiyaunity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

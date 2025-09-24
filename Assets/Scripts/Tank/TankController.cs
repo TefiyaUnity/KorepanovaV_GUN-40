@@ -103,7 +103,7 @@ namespace Tanks
             _wheels[0].SteerAngle = angle;
             _wheels[1].SteerAngle = angle;
 
-            // CalculateSpeed();
+            CalculateSpeed();
             ApplyDrive();
 
             AddDownForce();

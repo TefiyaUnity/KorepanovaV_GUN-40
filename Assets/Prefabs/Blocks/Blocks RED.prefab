@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5014947728271949209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blocks RED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 6566003394898654876}
   - component: {fileID: 5433359520155322653}
   - component: {fileID: 7345113617476078172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7912641874378687471}
   - component: {fileID: 5538916492188635164}
   - component: {fileID: 1324736514219915023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 9053481465198791433}
   - component: {fileID: 6209341180528426824}
   - component: {fileID: 7208057907941092465}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5635170177770501956}
   - component: {fileID: 286629703444053524}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 1945289755989339936}
   - component: {fileID: 2662511519465656465}
   - component: {fileID: 3623857191156540908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

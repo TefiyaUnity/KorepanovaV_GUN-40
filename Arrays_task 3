@@ -1,0 +1,39 @@
+// Задание 3
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Создаём двумерный массив 3x3
+            int[,] matrix = new int[3, 3];
+
+            // Заполняем матрицу по строкам
+            // Первая строка: 2¹, 3¹, 4¹ (т.е. просто 2, 3, 4)
+            matrix[0, 0] = (int)Math.Pow(2, 1);
+            matrix[0, 1] = (int)Math.Pow(3, 1);
+            matrix[0, 2] = (int)Math.Pow(4, 1);
+
+            // Вторая строка: 2², 3², 4²
+            matrix[1, 0] = (int)Math.Pow(2, 2);
+            matrix[1, 1] = (int)Math.Pow(3, 2);
+            matrix[1, 2] = (int)Math.Pow(4, 2);
+
+            // Третья строка: 2³, 3³, 4³
+            matrix[2, 0] = (int)Math.Pow(2, 3);
+            matrix[2, 1] = (int)Math.Pow(3, 3);
+            matrix[2, 2] = (int)Math.Pow(4, 3);
+
+            // Выводим матрицу на экран
+            Console.WriteLine("Матрица 3x3:");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(matrix[i, j] + "\t"); // \t — табуляция для выравнивания
+                }
+                Console.WriteLine(); // Переход на новую строку после каждой строки матрицы
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+// Класс 1
+using System;
+
+public class Unit
+{
+    // Открытые свойства
+    public string Name { get; }
+
+    private float _health;
+    public float Health => _health;
+
+    public int Damage { get; }
+
+    public float Armor { get; }
+
+    // Конструкторы
+    public Unit() : this("Unknown Unit")
+    {
+    }
+
+    public Unit(string name)
+    {
+        Name = name ?? throw new ArgumentNullException(nameof(name), "Имя юнита не может быть null");
+        _health = 100.0f;
+        Damage = 5;
+        Armor = 0.6f;
+    }
+
+    // Метод для получения фактического здоровья
+    public float GetRealHealth()
+    {
+        return _health * (1.0f + Armor);
+    }
+
+    // Метод для нанесения урона
+    public bool SetDamage(float value)
+    {
+        if (value < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(value), "Значение урона не может быть отрицательным");
+        }
+
+        _health -= value * Armor;
+        return _health <= 0.0f;
+    }
+}
+
+// Класс с точкой входа в программу
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Пример создания юнита с именем
+        Unit warrior = new Unit("Воин");
+        Console.WriteLine($"Имя: {warrior.Name}");
+        Console.WriteLine($"Здоровье: {warrior.Health}");
+        Console.WriteLine($"Урон: {warrior.Damage}");
+        Console.WriteLine($"Броня: {warrior.Armor}");
+        Console.WriteLine($"Фактическое здоровье: {warrior.GetRealHealth()}");
+
+        // Наносим урон
+        bool isDead = warrior.SetDamage(50);
+        Console.WriteLine($"После урона 50: Здоровье = {warrior.Health}, Юнит мёртв: {isDead}");
+
+        // Ещё один удар
+        isDead = warrior.SetDamage(100);
+        Console.WriteLine($"После урона 100: Здоровье = {warrior.Health}, Юнит мёртв: {isDead}");
+
+        // Пример юнита без указания имени (будет "Unknown Unit")
+        Unit unknown = new Unit();
+        Console.WriteLine($"\nИмя неизвестного юнита: {unknown.Name}");
+
+        Console.ReadLine(); // Ожидание ввода для удержания окна консоли
+    }
+}

@@ -1,0 +1,30 @@
+// Задание 1
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Создаём массив на 8 элементов
+            int[] fibonacci = new int[8];
+
+            // Первые два числа последовательности
+            fibonacci[0] = 0;
+            fibonacci[1] = 1;
+
+            // Заполняем остальные элементы массива
+            for (int i = 2; i < 8; i++)
+            {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+            }
+
+            // Выводим массив на экран
+            Console.WriteLine("Первые 8 чисел Фибоначчи:");
+            for (int i = 0; i < 8; i++)
+            {
+                Console.Write(fibonacci[i] + " ");
+            }
+        }
+    }
+}
+

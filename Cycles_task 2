@@ -1,0 +1,16 @@
+// Задание 2
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Чётные числа от 2 до 20:");
+
+            for (int i = 2; i <= 20; i += 2)
+            {
+                Console.Write(i + " ");
+            }
+        }
+    }
+}

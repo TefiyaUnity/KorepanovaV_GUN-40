@@ -1,0 +1,33 @@
+// Задание 2
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Массив с названиями месяцев
+            string[] months = new string[]
+            {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+            };
+
+            // Вывод массива (для проверки)
+            Console.WriteLine("Названия месяцев:");
+            foreach (string month in months)
+            {
+                Console.WriteLine(month);
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+using static System.Net.Mime.MediaTypeNames;
+
+class Progrem
+{
+
+    static void Main(string[] args)
+    {
+
+        // Ввод первого числа  
+        Console.Write("Введите первое число: ");
+        if (!int.TryParse(Console.ReadLine(), out int a))
+        {
+            Console.WriteLine("Ошибка: Неверный ввод целого числа!");
+            return;
+        }
+
+        // Ввод второго числа  
+        Console.Write("Введите второе число: ");
+        if (!int.TryParse(Console.ReadLine(), out int b))
+        {
+            Console.WriteLine("Ошибка: Неверный ввод целого числа!");
+            return;
+        }
+
+        // Ввод оператора  
+        Console.Write("Введите один из операторов (& | ^): ");
+        int asciiCode = Console.Read();
+        char operatorChar = (char)asciiCode;
+
+        // Проверка корректности оператора  
+        if (operatorChar != '&' && operatorChar != '|' && operatorChar != '^')
+        {
+            Console.WriteLine("Ошибка: Неверный оператор!");
+            return;
+        }
+
+        int result = 0;
+
+        // Выполнение операции  
+        switch (operatorChar)
+        {
+            case '&':
+                result = a & b;
+                break;
+            case '|':
+                result = a | b;
+                break;
+            case '^':
+                result = a ^ b;
+                break;
+        }
+
+        // Вывод результата в разных системах счисления  
+        Console.WriteLine($"Результат в десятичной системе счисления: {result}");
+        Console.WriteLine($"Результат в двоичной системе счисления: {Convert.ToString(result, 2)}");
+        Console.WriteLine($"Результат в шестнадцатеричной системе счисления: {Convert.ToString(result, 16)}");
+
+    }    
+
+ }
+
+

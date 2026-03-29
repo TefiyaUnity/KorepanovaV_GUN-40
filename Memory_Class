@@ -1,0 +1,228 @@
+// Задание
+using System;
+
+public class Unit
+{
+    // Открытые свойства
+    public string Name { get; }
+
+    private float _health;
+    public float Health => _health;
+
+    public int Damage { get; }
+
+    public float Armor { get; }
+
+    // Конструкторы
+    public Unit() : this("Unknown Unit")
+    {
+    }
+
+    public Unit(string name)
+    {
+        Name = name ?? throw new ArgumentNullException(nameof(name), "Имя юнита не может быть null");
+        _health = 100.0f;
+        Damage = 5;
+        Armor = 0.6f;
+    }
+
+    // Метод для получения фактического здоровья
+    public float GetRealHealth()
+    {
+        return _health * (1.0f + Armor);
+    }
+
+    // Метод для нанесения урона
+    public bool SetDamage(float value)
+    {
+        if (value < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(value), "Значение урона не может быть отрицательным");
+        }
+
+        _health -= value * Armor;
+        return _health <= 0.0f;
+    }
+}
+
+// Класс с точкой входа в программу
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Пример создания юнита с именем
+        Unit warrior = new Unit("Воин");
+        Console.WriteLine($"Имя: {warrior.Name}");
+        Console.WriteLine($"Здоровье: {warrior.Health}");
+        Console.WriteLine($"Урон: {warrior.Damage}");
+        Console.WriteLine($"Броня: {warrior.Armor}");
+        Console.WriteLine($"Фактическое здоровье: {warrior.GetRealHealth()}");
+
+        Dungeon dungeon = new Dungeon();
+        dungeon.ShowRooms();
+
+        // Наносим урон
+        bool isDead = warrior.SetDamage(50);
+        Console.WriteLine($"После урона 50: Здоровье = {warrior.Health}, Юнит мёртв: {isDead}");
+
+        // Ещё один удар
+        isDead = warrior.SetDamage(100);
+        Console.WriteLine($"После урона 100: Здоровье = {warrior.Health}, Юнит мёртв: {isDead}");
+
+        // Пример юнита без указания имени (будет "Unknown Unit")
+        Unit unknown = new Unit();
+        Console.WriteLine($"\nИмя неизвестного юнита: {unknown.Name}");
+
+        Console.ReadLine(); // Ожидание ввода для удержания окна консоли
+    }
+}
+
+// Структура для определения интервала чисел
+public struct Interval
+{
+    public float Min { get; private set; }
+    public float Max { get; private set; }
+
+    private Random _random = new Random();
+
+    public Interval(int minValue, int maxValue)
+    {
+        // Проверка и корректировка входных значений
+        if (minValue > maxValue)
+        {
+            int temp = minValue;
+            minValue = maxValue;
+            maxValue = temp;
+            Console.WriteLine($"Некорректные входные данные для интервала: minValue > maxValue. Значения поменяны местами для оружия.");
+        }
+
+        if (minValue < 0)
+        {
+            minValue = 0;
+            Console.WriteLine($"Некорректное значение minValue < 0. Значение установлено в 0 для оружия.");
+        }
+
+        if (maxValue < 0)
+        {
+            maxValue = 0;
+            Console.WriteLine($"Некорректное значение maxValue < 0. Значение установлено в 0 для оружия.");
+        }
+
+        if (minValue == maxValue)
+        {
+            maxValue += 10;
+            Console.WriteLine($"Значения minValue и maxValue равны. Максимальное значение увеличено на 10 для оружия.");
+        }
+
+        Min = minValue;
+        Max = maxValue;
+    }
+
+    // Возвращает случайное значение в интервале
+    public float Get()
+    {
+        return (float)_random.NextDouble() * (Max - Min) + Min;
+    }
+}
+
+// Класс оружия
+public class Weapon
+{
+    public string Name { get; }
+    private Interval _damageInterval;
+    public float Durability { get; }
+
+    // Конструктор с одним аргументом
+    public Weapon(string name)
+    {
+        Name = name;
+        Durability = 1.0f;
+    }
+
+    // Конструктор с тремя аргументами
+    public Weapon(string name, int minDamage, int maxDamage) : this(name)
+    {
+        SetDamageParams(minDamage, maxDamage);
+    }
+
+    // Метод для установки параметров урона
+    public void SetDamageParams(int minDamage, int maxDamage)
+    {
+        if (minDamage > maxDamage)
+        {
+            int temp = minDamage;
+            minDamage = maxDamage;
+            maxDamage = temp;
+            Console.WriteLine($"Некорректные входные данные для оружия '{Name}': minDamage > maxDamage. Значения поменяны местами.");
+        }
+
+        if (minDamage < 1)
+        {
+            minDamage = 1;
+            Console.WriteLine($"Для оружия '{Name}' минимальное значение урона принудительно установлено в 1.");
+        }
+
+        if (maxDamage <= 1)
+        {
+            maxDamage = 10;
+            Console.WriteLine($"Для оружия '{Name}' максимальное значение урона принудительно установлено в 10.");
+        }
+
+        _damageInterval = new Interval(minDamage, maxDamage);
+    }
+
+    // Возвращает средний урон
+    public int GetDamage()
+    {
+        return (int)Math.Round((_damageInterval.Min + _damageInterval.Max) / 2);
+    }
+}
+
+// Структура комнаты
+public struct Room
+{
+    public Unit Unit { get; }
+    public Weapon Weapon { get; }
+
+    public Room(Unit unit, Weapon weapon)
+    {
+        Unit = unit;
+        Weapon = weapon;
+    }
+}
+
+// Класс подземелья
+public class Dungeon
+{
+    private Room[] _rooms;
+
+    // Конструктор по умолчанию
+    public Dungeon()
+    {
+        _rooms = new Room[]
+        {
+            new Room(new Unit("Воин"), new Weapon("Меч", 5, 15)),
+            new Room(new Unit("Маг"), new Weapon("Посох", 3, 12)),
+            new Room(new Unit("Лучник"), new Weapon("Лук", 7, 20)),
+            new Room(new Unit("Паладин"), new Weapon("Булава", 8, 18)),
+            new Room(new Unit("Разбойник"), new Weapon("Кинжалы", 4, 14))
+        };
+    }
+
+    // Метод вывода информации о комнатах
+    public void ShowRooms()
+    {
+        for (int i = 0; i < _rooms.Length; i++)
+        {
+            var room = _rooms[i];
+            Console.WriteLine("Unit of room: " + room.Unit);
+            Console.WriteLine("Weapon of room: " + room.Weapon.Name);
+            Console.WriteLine("Damage of weapon: " + room.Weapon.GetDamage());
+            Console.WriteLine("---");
+        }
+    }
+}
+
+// Основной класс программы
+
+   

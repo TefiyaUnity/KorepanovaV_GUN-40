@@ -1,0 +1,39 @@
+// Задание 4
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Создаём ступенчатый массив (массив массивов)
+            double[][] jArray = new double[3][]; // 3 строки разной длины
+
+            // Первый подмассив: числа от 1 до 5
+            jArray[0] = new double[] { 1, 2, 3, 4, 5 };
+
+            // Второй подмассив: константы e и π из класса Math
+            jArray[1] = new double[] { Math.E, Math.PI };
+
+            // Третий подмассив: log₁₀ от 1, 10, 100, 1000
+            jArray[2] = new double[]
+            {
+            Math.Log10(1),
+            Math.Log10(10),
+            Math.Log10(100),
+            Math.Log10(1000)
+            };
+
+            // Выводим содержимое ступенчатого массива
+            Console.WriteLine("Ступенчатый массив:");
+            for (int i = 0; i < jArray.Length; i++)
+            {
+                Console.Write($"Строка {i}: ");
+                for (int j = 0; j < jArray[i].Length; j++)
+                {
+                    Console.Write($"{jArray[i][j]:F4} "); // F4 — 4 знака после запятой
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}

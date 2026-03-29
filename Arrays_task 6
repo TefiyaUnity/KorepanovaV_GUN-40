@@ -1,0 +1,25 @@
+// Задание 6
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = { 1, 2, 3, 4, 5 };
+            int[] array2 = { 7, 8, 9, 10, 11, 12, 13 };
+
+            // Вычисляем новый размер — в 2 раза больше текущего
+            int newSize = array.Length * 2;
+
+            // Изменяем размер массива с помощью Array.Resize
+            Array.Resize(ref array, newSize);
+
+            // Выводим результат
+            Console.WriteLine("Массив array после увеличения размера:");
+            foreach (int item in array)
+            {
+                Console.Write(item + " ");
+            }
+        }
+    }
+}

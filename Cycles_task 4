@@ -1,0 +1,31 @@
+// Задание 4
+namespace HomeWork
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = "qwerty";
+            string userInput;
+
+            // Цикл do-while: сначала выполняем тело, затем проверяем условие
+            do
+            {
+                Console.Write("Введите пароль: ");
+                userInput = Console.ReadLine();
+
+                if (userInput != password)
+                {
+                    Console.WriteLine("Неверный пароль. Попробуйте ещё раз.");
+                }
+            }
+            while (userInput != password); // Повторять, пока введённый пароль не совпадет с заданным
+
+
+            // Если пароль введён верно — выходим из цикла и печатаем сообщение
+            Console.WriteLine("Пароль верен! Доступ разрешён.");
+        }
+    }
+}
+
+
